@@ -12,13 +12,16 @@ function App() {
   const [mode, setMode] = useState('light')
   const [alert, setAlert] = useState(null)
 
-  const showAlert = (message,typwe) => {
+  const showAlert = (message,type) => {
     setAlert({
       msg: message,
       type: type
     })
-
+    setTimeout(() => {
+      setAlert(null);
+  }, 1500);
   }
+
   const toggleMode = () => {
     if (mode==='light'){
       setMode('dark')
@@ -35,10 +38,9 @@ function App() {
   
   return (
     <>
-      
         
         <div className = 'animation'><App2/></div>
-        <Navbar className='navbaar' mode={mode} toggleMode={toggleMode} showAlert={showAlert}/>
+        <Navbar className='navbaar' mode={mode} toggleMode={toggleMode}/>
         <Alerts alert={alert}/>
         <div className="container my-3">
           <TextForm heading="Enter your text below..." mode={mode} style={{backgroudColor:mode==='white'?'white':'#121212'}}/>
